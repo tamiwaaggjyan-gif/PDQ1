@@ -39,6 +39,15 @@ public class pertemuan3 {
                 System.out.println();
 
                 total = harga * jumlah;
+                System.out.println("total : " + total);
+            if (jawab.equalsIgnoreCase("t")){
+                System.out.println("nama barang : ");
+                namaBarang = myObj.nextLine();
+                System.out.println("harga : ");
+                harga = myObj.nextDouble();
+                System.out.println("jumlah beli : ");
+                jumlah = myObj.nextDouble();
+            }
                 
             } 
         } else {

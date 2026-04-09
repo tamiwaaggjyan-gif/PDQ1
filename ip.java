@@ -4,49 +4,81 @@ public class ip {
 public static void main(String[] args) {
     Scanner input = new Scanner (System.in);
     int jumlahMatkul;
-    double totalBobot = 0;
-    int totalSKS = 0;
+        double totalNilai = 0;
+        int totalSKS = 0;
 
-    System.out.print("Masukkan jumlah mata kuliah: ");
-    jumlahMatkul = input.nextInt();
-    for (int i = 1; i <= jumlahMatkul; i++) {
-    System.out.println("\nMata kuliah ke-" + i);
-    System.out.print("Masukkan nilai (A/B/C/D/E): ");
-    char nilai = input.next().toUpperCase().charAt(0);
-    System.out.print("Masukkan jumlah SKS: ");
-    int sks = input.nextInt();
-    double bobot = 0;
+        System.out.print("Masukkan jumlah mata kuliah: ");
+        jumlahMatkul = input.nextInt();
+        input.nextLine(); // buang enter
 
-    switch (nilai) {
-    case 'A': bobot = 4.0; break;
-    case 'B': bobot = 3.0; break;
-    case 'C': bobot = 2.0; break;
-    case 'D': bobot = 1.0; break;
-    case 'E': bobot = 0.0; break;
-    default:
-    System.out.println("Nilai tidak valid!");
-    i--;
-    continue;
+        for (int i = 1; i <= jumlahMatkul; i++) {
+            System.out.println("\nMata Kuliah ke-" + i);
+            System.out.print("Nilai Huruf (A/B/C/D/E): ");
+            char nilaiHuruf = input.next().toUpperCase().charAt(0);
+            input.nextLine(); // buang enter
+            System.out.print("Jumlah SKS: ");
+            int sks = input.nextInt();
+
+
+            int nilaiAngka = 0;
+            String keterangan = "";
+
+            // SWITCH CASE
+            switch (nilaiHuruf) {
+                case 'A':
+                    nilaiAngka = 4;
+                    keterangan = "Sangat Baik";
+                    break;
+                case 'B':
+                    nilaiAngka = 3;
+                    keterangan = "Baik";
+                    break;
+                case 'C':
+                    nilaiAngka = 2;
+                    keterangan = "Cukup";
+                    break;
+                case 'D':
+                    nilaiAngka = 1;
+                    keterangan = "Kurang";
+                    break;
+                case 'E':
+                    nilaiAngka = 0;
+                    keterangan = "Sangat Kurang";
+                    break;
+                default:
+                    System.out.println("Nilai tidak valid! Ulangi input.");
+                    i--;
+                    continue;
+            }
+
+            System.out.println("Keterangan: " + keterangan);
+
+            totalNilai += nilaiAngka * sks;
+            totalSKS += sks;
+        }
+
+        // Hitung IPS
+        double ips = totalNilai / totalSKS;
+
+        // Tentukan SKS maksimal
+        int sksMaks;
+
+        if (ips >= 3.50) {
+            sksMaks = 24;
+        } else if (ips >= 3.00) {
+            sksMaks = 22;
+        } else if (ips >= 2.00) {
+            sksMaks = 20;
+        } else {
+            sksMaks = 18;
+        }
+
+        // Output
+        System.out.println("\n===== HASIL AKHIR =====");
+        System.out.println("Total SKS: " + totalSKS);
+        System.out.printf("IPS: %.2f\n", ips);
+        System.out.println("Maksimal SKS Semester Depan: " + sksMaks);
+
+        input.close();
     }
-    totalBobot += bobot * sks;
-    totalSKS += sks;
 }
-    double IP = totalBobot / totalSKS;
-    System.out.printf("\nIP Semester: %.2f\n", IP);
-
-    int maksSKS;
-    if (IP >= 3.50) {
-        maksSKS = 24;
-    } else if (IP >= 3.00) {
-        maksSKS = 22;
-    } else if (IP >= 2.00) {
-        maksSKS = 20;
-    } else {
-        maksSKS = 18;
-    }
-
-    System.out.println("Maksimal SKS yang bisa diambil: " + maksSKS);
-
-}
-}
-
