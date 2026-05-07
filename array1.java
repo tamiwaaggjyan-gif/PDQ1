@@ -52,7 +52,6 @@ public class array1 {
                         harga[i] = myObj.nextInt();
                         myObj.nextLine();
                     }
-
                     for (int i=0; i< kategori.length; i++) {
                         System.out.println("Kategori ke-" + (i+1));
                         System.out.println("Kategori: " + kategori[i]);
