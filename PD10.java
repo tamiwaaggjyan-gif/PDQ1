@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class PD10 {
     static int LuasPersegiPanjang(int panjang, int lebar) {
         int hasil = panjang * lebar;
-        return hasil;
+        return hasil; // Mengembalikan hasil luas persegi panjang
     }
     static int Factorial(int n) {
         if (n == 0 || n == 1) {
